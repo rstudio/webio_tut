@@ -1,0 +1,19 @@
+{
+  "name": "webio_tut",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "wdio"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "wdio-junit-reporter": "^0.4.4",
+    "wdio-mocha-framework": "^0.6.4",
+    "wdio-selenium-standalone-service": "0.0.11",
+    "wdio-spec-reporter": "^0.1.5",
+    "webdriverio": "^4.14.1"
+  }
+}

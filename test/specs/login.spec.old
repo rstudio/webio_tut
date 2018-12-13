@@ -1,0 +1,5 @@
+describe('Login Page', function() {
+    it('should let you log in', function() {
+	browser.url('/login')
+    })
+})
