@@ -17,7 +17,7 @@ node('docker') {
 
                     stage('Test') {
                         sh 'npm install'
-                        sh 'wdio'
+                        sh './node_modules/.bin/wdio wdio.conf.js'
                     }
                     /*
                     stage('Lint') {
