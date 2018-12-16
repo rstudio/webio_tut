@@ -16,6 +16,7 @@ node('docker') {
                     }
 
                     stage('Test') {
+                        sh 'npm install'
                         sh 'wdio'
                     }
                     /*
