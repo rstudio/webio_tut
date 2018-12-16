@@ -15,10 +15,10 @@ node('docker') {
                         sh 'npm install'
                     }
 
-                    /*stage('Build') {
-                        sh 'npm run build'
+                    stage('Test') {
+                        sh 'wdio'
                     }
-
+                    /*
                     stage('Lint') {
                         sh 'npm run linter'
                     }*/
