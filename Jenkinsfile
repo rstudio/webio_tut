@@ -27,11 +27,12 @@ node('docker') {
 
 
                 }
+                browserstack('6026f57b-72ff-4eb6-850f-3a76c509356f') {
+                    // some block
+                    sh npm test
+                }
             }
-            browserstack('6026f57b-72ff-4eb6-850f-3a76c509356f') {
-                // some block
-                sh npm test
-            }
+
         }
     }
 }
