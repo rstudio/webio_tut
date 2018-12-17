@@ -16,14 +16,19 @@ node('docker') {
                         sh 'npm list'
                     }
 
-                    stage('Test') {
+                    //stage('Test') {
                         //sh 'npm install'
-                        sh '$HOME/node_modules/.bin/wdio wdio.conf.js'
-                    }
+                        //sh '$HOME/node_modules/.bin/wdio wdio.conf.js'
+                   // }
                     /*
                     stage('Lint') {
                         sh 'npm run linter'
                     }*/
+
+                    browserstack('6026f57b-72ff-4eb6-850f-3a76c509356f') {
+                        // some block
+                        sh npm test
+                    }
                 }
             }
         }
