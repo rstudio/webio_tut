@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "wdio-browserstack-service": "^0.1.18",
     "wdio-junit-reporter": "^0.4.4",
     "wdio-mocha-framework": "^0.6.4",
     "wdio-selenium-standalone-service": "0.0.11",
