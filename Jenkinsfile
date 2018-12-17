@@ -13,11 +13,12 @@ node('docker') {
                 withEnv(['HOME=.']) {
                     stage('Install requirements') {
                         sh 'npm install'
+                        sh 'npm list'
                     }
 
                     stage('Test') {
-                        sh 'npm install'
-                        sh './node_modules/.bin/wdio wdio.conf.js'
+                        //sh 'npm install'
+                        sh '$HOME/node_modules/.bin/wdio wdio.conf.js'
                     }
                     /*
                     stage('Lint') {
