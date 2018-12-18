@@ -27,9 +27,29 @@ node('docker') {
 
 
                 }
-                browserstack('6026f57b-72ff-4eb6-850f-3a76c509356f') {
-                    // some block
-                    sh npm test
+
+
+                stage('Run Tests') {
+                    try {
+                        browserstack('6026f57b-72ff-4eb6-850f-3a76c509356f') {
+                            // some block
+                            sh 'npm test'
+                        }
+                    } finally {
+                        junit '**/reports/test-results-*.xml'
+
+                        step([$class: 'CoberturaPublisher',
+                              autoUpdateHealth: false,
+                              autoUpdateStability: false,
+                              coberturaReportFile: 'coverage/cobertura-coverage.xml',
+                              failNoReports: false,
+                              failUnhealthy: false,
+                              failUnstable: false,
+                              maxNumberOfBuilds: 0,
+                              onlyStable: false,
+                              sourceEncoding: 'ASCII',
+                              zoomCoverageChart: false])
+                    }
                 }
             }
 
