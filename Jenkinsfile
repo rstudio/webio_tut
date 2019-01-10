@@ -49,7 +49,7 @@ node('docker') {
 //                              onlyStable: false,
 //                              sourceEncoding: 'ASCII',
 //                              zoomCoverageChart: false])
-                        sendNotifications slack_channel: "<@Jonathan Gartland>"
+                        sendNotifications slack_channel: 'jgtestalert'
                     }
                 }
             }
