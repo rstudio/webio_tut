@@ -49,6 +49,9 @@ node('docker') {
 //                              onlyStable: false,
 //                              sourceEncoding: 'ASCII',
 //                              zoomCoverageChart: false])
+                        //todo : change to appropriate channel when this goes live
+                        // most likely qaautotest, but maybe we use a #hostedtesting
+                        // the world is our oyster
                         sendNotifications slack_channel: 'jgtestalert'
                     }
                 }
