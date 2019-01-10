@@ -36,19 +36,20 @@ node('docker') {
                             sh 'npm test'
                         }
                     } finally {
-                        junit '**/reports/test-results-*.xml'
-
-                        step([$class: 'CoberturaPublisher',
-                              autoUpdateHealth: false,
-                              autoUpdateStability: false,
-                              coberturaReportFile: 'coverage/cobertura-coverage.xml',
-                              failNoReports: false,
-                              failUnhealthy: false,
-                              failUnstable: false,
-                              maxNumberOfBuilds: 0,
-                              onlyStable: false,
-                              sourceEncoding: 'ASCII',
-                              zoomCoverageChart: false])
+//                        junit '**/reports/test-results-*.xml'
+//
+//                        step([$class: 'CoberturaPublisher',
+//                              autoUpdateHealth: false,
+//                              autoUpdateStability: false,
+//                              coberturaReportFile: 'coverage/cobertura-coverage.xml',
+//                              failNoReports: false,
+//                              failUnhealthy: false,
+//                              failUnstable: false,
+//                              maxNumberOfBuilds: 0,
+//                              onlyStable: false,
+//                              sourceEncoding: 'ASCII',
+//                              zoomCoverageChart: false])
+                        sendNotifications slack_channel: '@Jonathan Gartland'
                     }
                 }
             }

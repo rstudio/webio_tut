@@ -181,6 +181,7 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
     // before: function (capabilities, specs) {
+    //
     // },
     /**
      * Runs before a WebdriverIO command gets executed.
@@ -195,6 +196,8 @@ exports.config = {
      * @param {Object} suite suite details
      */
     // beforeSuite: function (suite) {
+    //
+    //
     // },
     /**
      * Function to be executed before a test (in Mocha/Jasmine) or a step (in Cucumber) starts.
@@ -225,6 +228,8 @@ exports.config = {
      * @param {Object} suite suite details
      */
     // afterSuite: function (suite) {
+    //
+    //   //browser.session('delete')
     // },
     
     /**
