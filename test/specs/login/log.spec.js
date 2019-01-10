@@ -12,7 +12,7 @@ describe('Login Page', function() {
     browser.click('/html/body/div/div/div/form[1]/button');
 
     browser.waitForExist('//*[@id="headerTitle"]');
-    console.log('ok');
+    //console.log('ok');
     var pageUrl = browser.getUrl();
 
     console.log(pageUrl);
