@@ -9,7 +9,7 @@ describe('Login Page', function() {
         browser.url('/');
         const loginElement = $('#menuToggler');
         loginElement.waitForVisible();
-        console.log(loginElement.isVisible());
+        //console.log(loginElement.isVisible());
         loginElement.click();
         const le2 = $('#userPanel > div > div.menu > a.menuItem.login');
         le2.waitForVisible();
@@ -23,8 +23,8 @@ describe('Login Page', function() {
 
         //browser.click('//*[@id="currentUser"]/div/div[1]/div/a[1]');
         //browser.waitForExist('body > div > div > div > form:nth-child(1) > button');
-        var pageUrl = browser.getUrl();
-        console.log(pageUrl);
+        //var pageUrl = browser.getUrl();
+        //console.log(pageUrl);
         // browser.waitForExist('//*[@id="currentUser"]/div/div[1]/div/a[1]');
         // browser.click('//*[@id="currentUser"]/div/div[1]/div/a[1]');
         //const formelement = $('body > div > div > div > form:nth-child(1) > button');

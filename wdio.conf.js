@@ -107,11 +107,12 @@ exports.config = {
       //   'resolution' : '1280x1024',
       // },
 
-      // {
-      //   'os_version': '12.1',
-      //   'device': 'iPad Pro 12.9 2018',
-      //   'real_mobile': 'true',
-      // },
+      {
+        'os_version': '12.1',
+        'device': 'iPad Pro 12.9 2018',
+        'real_mobile': 'true',
+        'deviceOrientation' : 'landscape',
+      },
 
       ],
 

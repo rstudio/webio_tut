@@ -6,7 +6,7 @@ node('docker') {
             }
 
             dir('node_modules') {
-                deleteDir()
+                deleteDir() /* todo: do i need this, figure out one way or the other' */
             }
 
             docker.image('node:8.14.0').inside {
