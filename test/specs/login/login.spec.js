@@ -4,7 +4,7 @@ describe('Login Page', function() {
 
   it('should let you log in', function() {
 
-    this.timeout(300000);
+    this.timeout(300000); //overkill ?? maybe
     browser.url('/');
 
     const menuTogglerElement = $('#menuToggler');
@@ -18,16 +18,17 @@ describe('Login Page', function() {
 
     menuTogglerElement.waitForVisible();
 
-    if (link.isVisible()) {
-      link.click();
-    } else {
-      menuTogglerElement.click();
-      le2.waitForVisible();
-      le2.click()
+    if (menuTogglerElement.isVisible() || link.isVisible()) {
+      if (link.isVisible()) {
+        link.click();
+      } else {
+        menuTogglerElement.click();
+        le2.waitForVisible();
+        le2.click()
+      }
     }
 
     formelement.waitForVisible();
-
     if(formelement.isVisible()) {
       browser.setValue('input[name="email"]', 'connect-qa+10000@rstudio.com');
       browser.setValue('input[name="password"]', 'rsctest99');

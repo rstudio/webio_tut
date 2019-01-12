@@ -13,24 +13,23 @@ node('docker') {
                 withEnv(['HOME=.']) {
                     stage('Install requirements') {
                         sh 'npm install'
-                        sh 'npm list'
                     }
-
-                    //stage('Test') {
-                        //sh 'npm install'
-                        //sh '$HOME/node_modules/.bin/wdio wdio.conf.js'
-                   // }
                     /*
                     stage('Lint') {
                         sh 'npm run linter'
                     }*/
-
-
                 }
-
 
                 stage('Run Tests') {
                     try {
+                        //browserstack key for user: jonathangartland2 on our account
+                        //will likely change to use a qaautotest user,
+                        //but probably something for hosted specifically.
+                        //It may be that we (Hosted) want our own account
+                        //(and other teams may have a similar need)
+                        //so that our front end devs can test easily on
+                        //multiple browser/os combos, but that is not critical to get these
+                        //tests up and running.
                         browserstack('6026f57b-72ff-4eb6-850f-3a76c509356f') {
                             // some block
                             sh 'npm test'
@@ -56,7 +55,6 @@ node('docker') {
                     }
                 }
             }
-
         }
     }
 }
