@@ -12,9 +12,9 @@ describe('Login Page', function() {
     const link = $('=#currentUser > div > div.menuItems > div > a:nth-child(1)');
 
     const formelement = $('body > div > div > div > form:nth-child(1) > button');
+    const systemStatus = $('#navPanel > div.panelContents > div.navMenu > div:nth-child(5) > div > a.menuItem.status')
 
     let pageUrl = "";
-
 
     menuTogglerElement.waitForVisible();
 
@@ -33,10 +33,13 @@ describe('Login Page', function() {
       browser.setValue('input[name="password"]', 'rsctest99');
       browser.click('/html/body/div/div/div/form[1]/button');
     }
+    else {
+      //no idea what i want here right now, just a demo
+    }
 
-
-    browser.waitForExist('//*[@id="headerTitle"]');
+    systemStatus.waitForVisible();
     pageUrl= browser.getUrl();
+
     assert(pageUrl.indexOf('/projects') > -1);
 
   })

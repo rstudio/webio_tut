@@ -79,14 +79,14 @@ exports.config = {
         // grid with only 5 firefox instance available you can make sure that not more than
         // 5 instance gets started at a time.
         //maxInstances: 5,
-        'os' : 'Windows',
-        'os_version' : '10',
-        browserName: 'firefox',
+        'os' : 'OS X',
+        'os_version' : 'Mojave',
+        browserName: 'Firefox',
         "moz:firefoxOptions": {
           // flag to activate Firefox headless mode (see https://github.com/mozilla/geckodriver/blob/master/README.md#firefox-capabilities for more details about moz:firefoxOptions)
           // args: ['-headless']
         },
-        'browser_version' : '64.0',
+        'browser_version' : '65.0 beta',
         resolution : '1280x1024',
       },
 
