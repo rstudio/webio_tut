@@ -5,16 +5,17 @@ describe('Login Page', function() {
   it('should let you log in', function() {
 
     this.timeout(300000);
+    browser.url('/');
 
     const menuTogglerElement = $('#menuToggler');
     const le2 = $('#userPanel > div > div.menu > a.menuItem.login');
-    const link = $('#currentUser > div > div.menuItems > div > a:nth-child(1) > span');
+    const link = $('=#currentUser > div > div.menuItems > div > a:nth-child(1)');
 
     const formelement = $('body > div > div > div > form:nth-child(1) > button');
 
     let pageUrl = "";
 
-    browser.url('/');
+
     menuTogglerElement.waitForVisible();
 
     if (link.isVisible()) {
