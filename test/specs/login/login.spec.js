@@ -4,22 +4,21 @@ describe('Login Page', function() {
 
   it('should let you log in', function() {
 
-    this.timeout(300000); //overkill ?? maybe
+    this.timeout(30000); //overkill ?? maybe
     browser.url('/');
 
     const menuTogglerElement = $('#menuToggler');
     const le2 = $('#userPanel > div > div.menu > a.menuItem.login');
-    const link = $('=#currentUser > div > div.menuItems > div > a:nth-child(1)');
-
     const formelement = $('body > div > div > div > form:nth-child(1) > button');
     const systemStatus = $('#navPanel > div.panelContents > div.navMenu > div:nth-child(5) > div > a.menuItem.status')
+    const link = $('=#currentUser > div > div.menuItems > div > a:nth-child(1)');
 
     let pageUrl = "";
 
     menuTogglerElement.waitForVisible();
 
     if (menuTogglerElement.isVisible() || link.isVisible()) {
-      if (link.isVisible()) {
+      if (link.isVisible() === true) {
         link.click();
       } else {
         menuTogglerElement.click();

@@ -90,14 +90,14 @@ exports.config = {
         resolution : '1280x1024',
       },
 
-      {
-        'os' : 'Windows',
-        'os_version' : '10',
-        browserName: 'Edge',
-        'platform': 'ANY',
-        'version': '18',
-        resolution : '1280x1024',
-      },
+      // {
+      //   'os' : 'Windows',
+      //   'os_version' : '10',
+      //   browserName: 'Edge',
+      //   'platform': 'ANY',
+      //   'version': '18',
+      //   resolution : '1280x800',
+      // },
 
       // {
       //   'os' : 'OS X',
