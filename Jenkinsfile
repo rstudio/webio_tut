@@ -52,7 +52,7 @@ node('docker') {
                         // most likely qaautotest, but maybe we use a #hostedtesting
                         // the world is our oyster
                         sendNotifications slack_channel: 'jgtestalert'
-                        slackSend channel: '<@Jonathan Gartland>', color: 'good', message: 'Message from Jenkins Pipeline'
+                        slackSend channel: '@jonathan.gartland', color: 'good', message: 'Message from Jenkins Pipeline'
                     }
                 }
             }
