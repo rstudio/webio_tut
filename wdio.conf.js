@@ -37,6 +37,29 @@ exports.config = {
          './test/specs/pages/*'
 
     ],
+
+    suites: {
+      login: [
+        './test/specs/login/login.spec.js',
+        //'./test/specs/login.failure.spec.js'
+      ],
+      // project: [
+      //   './test/specs/project/*'
+      // ],
+      // spaces: [
+      //   './test/specs/project/*'
+      // ],
+      //
+      //
+      //admin
+      //moderator
+      //viewer
+      //contributor
+
+      //teacher
+      //student
+
+    },
     //
     // ============
     // Capabilities
