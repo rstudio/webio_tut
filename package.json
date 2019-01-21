@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "wdio"
+    "test": "wdio",
+    "step-test": "mocha --inspect-brk"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +20,5 @@
   },
   "dependencies": {
     "wdio": "^3.0.0"
-  }
+   }
 }

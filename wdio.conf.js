@@ -1,22 +1,10 @@
+const debug = process.env.DEBUG;
+//const bUrl = process.env.VARIABLE;
+//const defaultCapabilities = {};
+const defaultTimeoutInterval = {};
+//const defaultSpecs = {};
+
 exports.config = {
-    
-    //
-    // =================
-    // Service Providers
-    // =================
-    // WebdriverIO supports Sauce Labs, Browserstack, and Testing Bot (other cloud providers
-    // should work too though). These services define specific user and key (or access key)
-    // values you need to put in here in order to connect to these services.
-    //
-  user: process.env.BROWSERSTACK_USERNAME || 'BROWSERSTACK_USERNAME',
-  key: process.env.BROWSERSTACK_ACCESS_KEY || 'BROWSERSTACK_ACC_KEY',
-    //
-    // If you run your tests on SauceLabs you can specify the region you want to run your tests
-    // in via the `region` property. You can either provide the full region name or the short handle:
-    // us: us-west-1 (default)
-    // eu: eu-central-1
-    // region: 'eu', // for eu-central-1
-    
     
     //
     // ==================
@@ -28,38 +16,16 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './test/specs/**/*.js'
+        //'./test/specs/**/*.js'
+      './test/specs/login/login-google.spec.js',
     ],
     // Patterns to exclude.
     exclude: [
-         './test/specs/login/login-google.spec.js',
-         './test/specs/login/login-github.spec.js',
-         './test/specs/pages/*'
-
+      '.test/specs/login/login.spec.js',
+      //'./test/specs/login/login-google.spec.js',
+      './test/specs/login/login-github.spec.js',
+      './test/specs/pages/*'
     ],
-
-    suites: {
-      login: [
-        './test/specs/login/login.spec.js',
-        //'./test/specs/login.failure.spec.js'
-      ],
-      // project: [
-      //   './test/specs/project/*'
-      // ],
-      // spaces: [
-      //   './test/specs/project/*'
-      // ],
-      //
-      //
-      //admin
-      //moderator
-      //viewer
-      //contributor
-
-      //teacher
-      //student
-
-    },
     //
     // ============
     // Capabilities
@@ -76,69 +42,26 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    //maxInstances: 10,
+    maxInstances: debug ? 1 : 100,
+    capabilities: debug ? [{ browserName: 'chrome' }] : [{ browserName: 'firefox' }],  //defaultCapabilities,
+    execArgv: debug ? ['--inspect'] : [],
+    jasmineNodeOpts: {
+      defaultTimeoutInterval: debug ? (24 * 60 * 60 * 1000) : defaultTimeoutInterval
+    },
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-
-    capabilities: [
-      {
-        'os' : 'Windows',
-        'os_version' : '10',
-         browserName: 'chrome',
-        'goog:chromeOptions': {
-           // to run chrome headless the following flags are required
-           // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
-           //args: ['--headless', '--disable-gpu'],
-         },
-        browser_version : '71.0',
-        resolution : '1280x1024',
-       },
-
-      {
-        // maxInstances can get overwritten per capability. So if you have an in house Selenium
-        // grid with only 5 firefox instance available you can make sure that not more than
-        // 5 instance gets started at a time.
-        //maxInstances: 5,
-        'os' : 'OS X',
-        'os_version' : 'Mojave',
-        browserName: 'Firefox',
-        "moz:firefoxOptions": {
-          // flag to activate Firefox headless mode (see https://github.com/mozilla/geckodriver/blob/master/README.md#firefox-capabilities for more details about moz:firefoxOptions)
-          // args: ['-headless']
-        },
-        'browser_version' : '65.0 beta',
-        resolution : '1280x1024',
-      },
-
-      // {
-      //   'os' : 'Windows',
-      //   'os_version' : '10',
-      //   browserName: 'Edge',
-      //   'platform': 'ANY',
-      //   'version': '18',
-      //   resolution : '1280x800',
-      // },
-
-      // {
-      //   'os' : 'OS X',
-      //   'os_version' : 'Mojave',
-      //   'browserName' : 'Safari',
-      //   'browser_version' : '12.0',
-      //   'resolution' : '1280x1024',
-      // },
-
-      // {
-      //   'os_version': '12.1',
-      //   'device': 'iPad Pro 12.9 2018',
-      //   'real_mobile': 'true',
-      //   'deviceOrientation' : 'landscape',
-      // },
-
-      ],
-
+    // capabilities: [{
+    //     // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+    //     // grid with only 5 firefox instances available you can make sure that not more than
+    //     // 5 instances get started at a time.
+    //     maxInstances: 5,
+    //     //
+    //     browserName: 'firefox'
+    // }],
     //
     // ===================
     // Test Configurations
@@ -151,7 +74,7 @@ exports.config = {
     sync: true,
     //
     // Level of logging verbosity: silent | verbose | command | data | result | error
-    logLevel: 'silent',
+    logLevel: 'verbose',
     //
     // Enables colors for log output.
     coloredLogs: true,
@@ -170,8 +93,10 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
+    //baseUrl: bUrl === undefined ? 'https://staging.rstudio.cloud' : bUrl ,
+                                              // 127.0.0.1
     baseUrl: 'https://staging.rstudio.cloud',
-    //
+  //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 100000,
     //
@@ -204,7 +129,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['browserstack'],
+    services: ['selenium-standalone'],
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -223,7 +148,8 @@ exports.config = {
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
-        ui: 'bdd'
+        ui: 'bdd',
+
     },
     //
     // =====
@@ -256,7 +182,6 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
     // before: function (capabilities, specs) {
-    //
     // },
     /**
      * Runs before a WebdriverIO command gets executed.
@@ -271,8 +196,6 @@ exports.config = {
      * @param {Object} suite suite details
      */
     // beforeSuite: function (suite) {
-    //
-    //
     // },
     /**
      * Function to be executed before a test (in Mocha/Jasmine) or a step (in Cucumber) starts.
@@ -297,15 +220,12 @@ exports.config = {
      * @param {Object} test test details
      */
     // afterTest: function (test) {
-    //   console.log(`Finished test "${test.parent} - ${test.title}"`);
     // },
     /**
      * Hook that gets executed after the suite has ended
      * @param {Object} suite suite details
      */
     // afterSuite: function (suite) {
-    //
-    //   console.log(`Finished suite "${suite.parent} - ${suite.title}"`);
     // },
     
     /**
