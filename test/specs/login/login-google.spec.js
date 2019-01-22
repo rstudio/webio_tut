@@ -7,7 +7,6 @@ describe('Login Page google', function() {
     this.timeout(24 * 60 * 60 * 1000); //overkill ?? maybe
     browser.url('/');
 
-    const loginGoogle = $('#login-form-google > button');
     const menuTogglerElement = $('#menuToggler');
     const le2 = $('#userPanel > div > div.menu > a.menuItem.login');
     const formelement = $('body > div > div > div > form:nth-child(1) > button');
@@ -16,9 +15,13 @@ describe('Login Page google', function() {
 
     //const accountPopup = $('=#.modalDialog');
     //const accountSelect = $('=#main > div:nth-child(4) > div > div > form > div.chunk.formSection > div.radioListBox.max5 > div:nth-child(1)');
+    const footerText = $('#copyright');
+
+    const loginGoogle = $('#login-form-google');
 
     const google_user = 'dfaltyname@gmail.com';
     const google_password = 'Export_Bamboo';
+
 
     const googleChoose = $('#headingText');
     const googleFormHeader = $('#initialView > div.xkfVF > div.fctIrd > div > div.Fmgc2c');
@@ -40,24 +43,41 @@ describe('Login Page google', function() {
     formelement.waitForVisible();
 
     if(formelement.isVisible()) {
-      //browser.setValue('input[name="email"]', 'connect-qa+10000@rstudio.com');
-      //browser.setValue('input[name="password"]', 'rsctest99');
-      loginGoogle.waitForVisible();
+      footerText.waitForVisible();
     }
 
-    browser.debug();
+    loginGoogle.waitForVisible(100000);
 
     if (loginGoogle.isVisible()){
-      loginGoogle.click();
+      var buttonclick = $('#login-form-google > button');
+      buttonclick.click();
+    }
+    browser.debug();
+    googleFormHeader.waitForVisible(100000);
+    assert (googleFormHeader.isVisible());
+
+    googleEmailInputId.waitForExist(100000);
+
+    if (googleEmailInputId.isVisible()) {
+      googleEmailInputId.setValue(google_user);
+    }
+    //browser.debug();
+    //browser.waitUntil(1000000);
+
+    //var nextId = $('#identifierNext > div.ZFr60d.CeoRYc');
+    //nextId.click();
+
+/*
+    var passwordField = $('#password');
+
+    if (passwordField.isVisible()){
+      passwordField.setValue(google_password)
     }
 
-    googleChoose.waitForVisible();
-
-    if (googleChoose.isVisible()) {
-      googleChoose.click()
-    }
-
-    googleFormHeader.waitForVisible();
+    var nextPass = $('#passwordNext > div.ZFr60d.CeoRYc');
+    nextPass.click();
+ */
+    //googleFormHeader.waitForVisible();
 
     // #identifierId sendtext - lookup how to
 
@@ -65,9 +85,10 @@ describe('Login Page google', function() {
     //browser.debug();
 
     //browser.waitForExist('#initialView > div.xkfVF > div.fctIrd > div > div.Fmgc2c');
-    var pageUrl = browser.getUrl();
+    //var pageUrl = browser.getUrl();
+    //console.log(pageUrl);
 
-    assert(browser.getUrl().indexOf('https://accounts.google.com/signin/oauth/identifier?client_id') > -1);
+    //assert(pageUrl.indexOf('https://accounts.google.com/signin/oauth/identifier?client_id') > -1);
 
 
 

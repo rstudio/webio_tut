@@ -17,13 +17,14 @@ exports.config = {
     //
     specs: [
         //'./test/specs/**/*.js'
-      './test/specs/login/login-google.spec.js',
+      //'./test/specs/login/login-google.spec.js',
+      './test/specs/login/login-github.spec.js',
     ],
     // Patterns to exclude.
     exclude: [
       '.test/specs/login/login.spec.js',
-      //'./test/specs/login/login-google.spec.js',
-      './test/specs/login/login-github.spec.js',
+      './test/specs/login/login-google.spec.js',
+      //'./test/specs/login/login-github.spec.js',
       './test/specs/pages/*'
     ],
     //
