@@ -18,14 +18,7 @@ describe('Login Page google', function() {
     const footerText = $('#copyright');
 
     const loginGithub = $('#login-form-github');
-
-    //const google_user = 'dfaltyname@gmail.com';
-    //const google_password = 'Export_Bamboo';
-
-
     const githubChoose = $('#headingText');
-    //const googleFormHeader = $('#initialView > div.xkfVF > div.fctIrd > div > div.Fmgc2c');
-    //const googleEmailInputId = $('#identifierId');
 
     menuTogglerElement.waitForVisible();
 
