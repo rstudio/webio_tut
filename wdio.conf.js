@@ -1,8 +1,4 @@
-const debug = process.env.DEBUG;
-//const bUrl = process.env.VARIABLE;
-//const defaultCapabilities = {};
-const defaultTimeoutInterval = {};
-//const defaultSpecs = {};
+
 
 exports.config = {
     
