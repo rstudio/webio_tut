@@ -19,8 +19,8 @@ describe('Login Page google', function() {
 
     const loginGoogle = $('#login-form-google');
 
-    const google_user = 'dfaltyname@gmail.com';
-    const google_password = 'Export_Bamboo';
+    const google_user = '';
+    const google_password = '';
 
 
     const googleChoose = $('#headingText');
