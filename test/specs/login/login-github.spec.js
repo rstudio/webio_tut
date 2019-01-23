@@ -10,7 +10,7 @@ describe('Login Page google', function() {
     const menuTogglerElement = $('#menuToggler');
     const le2 = $('#userPanel > div > div.menu > a.menuItem.login');
     const formelement = $('body > div > div > div > form:nth-child(1) > button');
-    //const systemStatus = $('#navPanel > div.panelContents > div.navMenu > div:nth-child(5) > div > a.menuItem.status')
+    const systemStatus = $('#navPanel > div.panelContents > div.navMenu > div:nth-child(5) > div > a.menuItem.status')
     const link = $('=#currentUser > div > div.menuItems > div > a:nth-child(1)');
 
     //const accountPopup = $('=#.modalDialog');
@@ -52,44 +52,46 @@ describe('Login Page google', function() {
       var buttonclick = $('#login-form-github > button');
       buttonclick.click();
     }
-    browser.debug();
-    // googleFormHeader.waitForVisible(100000);
-    // assert (googleFormHeader.isVisible());
-    //
-    // googleEmailInputId.waitForExist(100000);
-    //
-    // if (googleEmailInputId.isVisible()) {
-    //   googleEmailInputId.setValue(google_user);
-    // }
+
+    var name_field = $('#login_field');
+    var password_field = $('#password');
+
+    name_field.setValue('jonathan-gartland');
+    password_field.setValue('Malcolm#0207');
     //browser.debug();
-    //browser.waitUntil(1000000);
+    sign_in_button = $('[name="commit"]');
+    sign_in_button.click();
 
-    //var nextId = $('#identifierNext > div.ZFr60d.CeoRYc');
-    //nextId.click();
-
-    /*
-        var passwordField = $('#password');
-
-        if (passwordField.isVisible()){
-          passwordField.setValue(google_password)
-        }
-
-        var nextPass = $('#passwordNext > div.ZFr60d.CeoRYc');
-        nextPass.click();
-     */
-    //googleFormHeader.waitForVisible();
-
-    // #identifierId sendtext - lookup how to
+    var modal = $('.modalDialog');
 
 
+    // todo : select account name. doable, just need to slow down and think it through
+    var account = $('div.item:nth-child(1)');
+    var account_button = $('.actions > button');
+    // better than this
+    // robbie mentioned cookies - maybe check there to see what we have available
+
+    modal.waitForVisible(100000);
+
+    if (modal.isVisible()) {
+
+      console.log('modal');
+
+      //browser.debug();
+
+      account.waitForVisible(100000);
+       if (account.isVisible()) {
+         account.click();
+       }
+       account_button.click();
+
+    }
+
+    systemStatus.waitForVisible(100000);
+
+    var pageUrl = browser.getUrl();
+    assert(pageUrl.indexOf('/projects') > -1);
     //browser.debug();
-
-    //browser.waitForExist('#initialView > div.xkfVF > div.fctIrd > div > div.Fmgc2c');
-    //var pageUrl = browser.getUrl();
-    //console.log(pageUrl);
-
-    //assert(pageUrl.indexOf('https://accounts.google.com/signin/oauth/identifier?client_id') > -1);
-
 
 
   })
