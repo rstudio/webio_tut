@@ -1,4 +1,8 @@
-
+const debug = process.env.DEBUG;
+//const bUrl = process.env.VARIABLE;
+//const defaultCapabilities = {};
+const defaultTimeoutInterval = {};
+//const defaultSpecs = {};
 
 exports.config = {
     
@@ -12,16 +16,14 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        //'./test/specs/**/*.js'
-      //'./test/specs/login/login-google.spec.js',
-      './test/specs/login/login-github.spec.js',
+        './test/specs/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
-      '.test/specs/login/login.spec.js',
+      //'./test/specs/login/login.spec.js',
+      //'./test/specs/**/*.js',
       './test/specs/login/login-google.spec.js',
-      //'./test/specs/login/login-github.spec.js',
-      './test/specs/pages/*'
+      './test/specs/login/login-github.spec.js',
     ],
     //
     // ============
@@ -39,26 +41,20 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    //maxInstances: 10,
-    maxInstances: debug ? 1 : 100,
-    capabilities: debug ? [{ browserName: 'chrome' }] : [{ browserName: 'firefox' }],  //defaultCapabilities,
-    execArgv: debug ? ['--inspect'] : [],
-    jasmineNodeOpts: {
-      defaultTimeoutInterval: debug ? (24 * 60 * 60 * 1000) : defaultTimeoutInterval
-    },
+    maxInstances: 10,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    // capabilities: [{
-    //     // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-    //     // grid with only 5 firefox instances available you can make sure that not more than
-    //     // 5 instances get started at a time.
-    //     maxInstances: 5,
-    //     //
-    //     browserName: 'firefox'
-    // }],
+    capabilities: [{
+        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+        // grid with only 5 firefox instances available you can make sure that not more than
+        // 5 instances get started at a time.
+        maxInstances: 5,
+        //
+        browserName: 'firefox'
+    }],
     //
     // ===================
     // Test Configurations
@@ -71,7 +67,7 @@ exports.config = {
     sync: true,
     //
     // Level of logging verbosity: silent | verbose | command | data | result | error
-    logLevel: 'verbose',
+    logLevel: 'silent',
     //
     // Enables colors for log output.
     coloredLogs: true,
@@ -90,16 +86,14 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    //baseUrl: bUrl === undefined ? 'https://staging.rstudio.cloud' : bUrl ,
-                                              // 127.0.0.1
     baseUrl: 'https://staging.rstudio.cloud',
-  //
+    //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 100000,
+    waitforTimeout: 10000,
     //
     // Default timeout in milliseconds for request
     // if Selenium Grid doesn't send response
-    connectionRetryTimeout: 900000,
+    connectionRetryTimeout: 90000,
     //
     // Default request retries count
     connectionRetryCount: 3,
@@ -139,13 +133,19 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/reporters/dot.html
-    reporters: ['spec'],
-    
+    reporters: ['junit'],
+    reporterOptions: {
+      junit: {
+        outputDir: './reports'
+      }
+    },
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
+      compilers: ['js:@babel/register'],
+      //require: ['./test/helpers/common.js'],
 
     },
     //
