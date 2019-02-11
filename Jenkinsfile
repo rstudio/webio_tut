@@ -21,6 +21,8 @@ node('docker') {
                 }
 
                 stage('Run Tests') {
+
+                    sh 'selenium-standalone start'
                     try {
                         //browserstack key for user: jonathangartland2 on our account
                         //will likely change to use a qaautotest user,
