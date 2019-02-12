@@ -5,24 +5,16 @@ node('docker') {
                 checkout scm
             }
 
-            dir('node_modules') {
-                deleteDir() /* todo: do i need this, figure out one way or the other' */
-            }
-
             docker.image('node:8.14.0').inside {
                 withEnv(['HOME=.']) {
                     stage('Install requirements') {
                         sh 'npm install'
+                        sh 'printenv'
                     }
-                    /*
-                    stage('Lint') {
-                        sh 'npm run linter'
-                    }*/
                 }
 
                 stage('Run Tests') {
 
-                    //sh 'selenium-standalone start'
                     try {
                         //browserstack key for user: jonathangartland2 on our account
                         //will likely change to use a qaautotest user,
